@@ -8,12 +8,7 @@
 <meta property="og:title" content="Ultralengua Pro">
 <meta property="og:description" content="Maîtrisez les langues naturellement avec l'IA">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ucfzem.github.io/ultralengua-pro/">
-<meta property="og:image" content="https://ucfzem.github.io/ultralengua-pro/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ultralengua Pro — Maîtrisez les langues avec l'IA">
-<meta name="twitter:description" content="Apprenez 6 langues avec l'IA conversationnelle. Quiz interactifs, histoires bilingues, glossaire intelligent.">
-<link rel="canonical" href="https://ucfzem.github.io/ultralengua-pro/">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -637,6 +632,158 @@
     .progress-grid { grid-template-columns: 1fr 1fr; }
   }
 
+  /* ── LEVEL TEST VIRAL ── */
+  .level-test-section {
+    padding: 5rem 3rem;
+    background: linear-gradient(135deg, var(--ink) 0%, #1a1a1a 100%);
+    color: var(--paper);
+    position: relative; overflow: hidden;
+  }
+  .level-test-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lt-inner { max-width: 1200px; margin: 0 auto; }
+  .level-test-section .section-label { color: var(--gold); }
+  .level-test-section .section-title { color: var(--paper); max-width: 100%; }
+  .level-test-section .section-sub { color: rgba(245,240,232,0.5); }
+  .lt-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    max-width: 560px;
+    margin-top: 2rem;
+    backdrop-filter: blur(8px);
+  }
+  .lt-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .lt-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .lt-card p { color: rgba(245,240,232,0.55); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  .lt-card .btn-primary { background: var(--gold); color: var(--ink); }
+  .lt-card .btn-primary:hover { background: var(--gold-light); }
+  .lt-progress { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+  .lt-progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .lt-progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width .3s; width: 20%; }
+  .lt-progress-text { font-size: 0.78rem; color: rgba(245,240,232,0.4); font-weight: 500; min-width: 30px; text-align: right; }
+  .lt-lang-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius-pill);
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem; font-weight: 500; color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .lt-q-text {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem; line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+  .lt-options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
+  .lt-option {
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer; transition: all .2s;
+    text-align: left;
+  }
+  .lt-option:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+  .lt-option.correct { border-color: var(--success); background: rgba(74,154,94,0.15); }
+  .lt-option.wrong { border-color: var(--error); background: rgba(196,88,58,0.15); }
+  .lt-option.disabled { cursor: default; opacity: 0.7; }
+  .lt-feedback {
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .lt-feedback.show { display: block; }
+  .lt-feedback.ok { background: rgba(74,154,94,0.12); color: #7ad48a; border: 1px solid rgba(74,154,94,0.25); }
+  .lt-feedback.ko { background: rgba(196,88,58,0.12); color: #e88a6a; border: 1px solid rgba(196,88,58,0.25); }
+
+  /* Result Card */
+  .lt-result-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2010 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .lt-result-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 20%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lt-result-badge { font-size: 3rem; margin-bottom: 0.5rem; }
+  .lt-result-label { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); font-weight: 500; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .lt-result-level {
+    font-family: 'Fraunces', serif;
+    font-size: 4rem; font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .lt-result-score { font-size: 1.1rem; color: rgba(245,240,232,0.5); margin-bottom: 0.3rem; }
+  .lt-result-score span { font-size: 2rem; color: var(--gold); font-weight: 700; }
+  .lt-result-desc { font-size: 0.9rem; color: rgba(245,240,232,0.4); margin-bottom: 1rem; }
+  .lt-result-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 0.8rem; color: rgba(201,168,76,0.25);
+    letter-spacing: 0.1em;
+  }
+  .lt-share-section { text-align: center; padding: 1rem 0; }
+  .lt-share-title { font-size: 0.95rem; margin-bottom: 1rem; color: rgba(245,240,232,0.7); }
+  .lt-share-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .lt-share-btn {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; transition: transform .15s;
+  }
+  .lt-share-btn:hover { transform: translateY(-2px); }
+  .lt-share-btn.tiktok { background: #000; color: #fff; border: 1px solid #333; }
+  .lt-share-btn.tiktok:hover { background: #1a1a1a; }
+  .lt-share-btn.link { background: rgba(255,255,255,0.08); color: var(--paper); border: 1px solid rgba(255,255,255,0.15); }
+  .lt-share-btn.link:hover { background: rgba(255,255,255,0.12); }
+  .lt-invite, .lt-reveal { margin-top: 1rem; }
+  .lt-invite p { font-size: 0.85rem; color: var(--success); margin-bottom: 0.5rem; }
+  .lt-reveal .btn-secondary { color: var(--paper); border-color: rgba(255,255,255,0.2); }
+  .lt-reveal .btn-secondary:hover { border-color: var(--gold); }
+  .lt-detail-cta { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .lt-answer-item {
+    padding: 0.8rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .lt-answer-item .qa-lang { font-size: 0.72rem; color: var(--gold); font-weight: 500; }
+  .lt-answer-item .qa-q { font-size: 0.88rem; margin: 0.2rem 0; }
+  .lt-answer-item .qa-a { font-size: 0.82rem; }
+  .lt-answer-item .qa-a.good { color: var(--success); }
+  .lt-answer-item .qa-a.bad { color: var(--error); }
+
+  @media (max-width: 600px) {
+    .level-test-section { padding: 3rem 1.5rem; }
+    .lt-card { padding: 1.5rem; }
+    .lt-result-level { font-size: 3rem; }
+    .lt-share-btns { flex-direction: column; }
+    .lt-share-btn { justify-content: center; }
+  }
+
   /* ── TOAST NOTIFICATION ── */
   .toast {
     position: fixed; bottom: 2rem; right: 2rem;
@@ -666,6 +813,7 @@
     <li><a href="#glossaire" onclick="closeNav()">Glossaire</a></li>
     <li><a href="#langues" onclick="closeNav()">Langues</a></li>
     <li><a href="#tarifs" onclick="closeNav()">Tarifs</a></li>
+    <li><a href="#levelTest" onclick="closeNav()">Test</a></li>
 
   </ul>
   <button class="nav-cta" onclick="document.getElementById('tarifs').scrollIntoView({behavior:'smooth'})">Commencer gratuitement</button>
@@ -711,6 +859,82 @@
           <div>
             <div class="streak-text">Série de 7 jours</div>
             <div class="progress-bar"><div class="progress-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEVEL TEST VIRAL -->
+<section class="level-test-section" id="levelTest">
+  <div class="lt-inner">
+    <div class="lt-content">
+      <div class="section-label">Test de niveau</div>
+      <h2 class="section-title">Quel est ton <em>vrai niveau</em> ?</h2>
+      <p class="section-sub">5 questions en 30 secondes. Découvre ton niveau réel et défie tes amis.</p>
+
+      <div id="ltApp">
+        <!-- Start Screen -->
+        <div id="ltStart" class="lt-card">
+          <div class="lt-card-icon">🌍</div>
+          <h3>Prêt à te tester ?</h3>
+          <p>5 questions multilingues. Personne ne fait 5/5 du premier coup.</p>
+          <button class="btn-primary" onclick="startLevelTest()">Commencer le test</button>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="ltQuestion" class="lt-card" style="display:none;">
+          <div class="lt-progress">
+            <div class="lt-progress-bar"><div class="lt-progress-fill" id="ltProgressFill"></div></div>
+            <div class="lt-progress-text" id="ltProgressText">1/5</div>
+          </div>
+          <div class="lt-lang-tag" id="ltLangTag">🇬🇧 Anglais</div>
+          <div class="lt-q-text" id="ltQText"></div>
+          <div class="lt-options" id="ltOptions"></div>
+          <div class="lt-feedback" id="ltFeedback"></div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="ltResult" class="lt-card" style="display:none;">
+          <div id="ltResultCard" class="lt-result-card">
+            <div class="lt-result-badge" id="ltResultBadge">🌟</div>
+            <div class="lt-result-label">TON NIVEAU</div>
+            <div class="lt-result-level" id="ltResultLevel">A1</div>
+            <div class="lt-result-score">
+              <span id="ltResultNum">0</span>/5
+            </div>
+            <div class="lt-result-desc" id="ltResultDesc">Débutant</div>
+            <div class="lt-result-brand">Ultralengua·Pro</div>
+          </div>
+
+          <div class="lt-share-section" id="ltShareSection">
+            <p class="lt-share-title">🎯 <strong>Partage ton résultat</strong> pour débloquer tes erreurs détaillées !</p>
+            <div class="lt-share-btns">
+              <button class="lt-share-btn tiktok" onclick="shareTikTok()">
+                <span>📱</span> Partager sur TikTok
+              </button>
+              <button class="lt-share-btn link" onclick="copyShareLink()">
+                <span>🔗</span> Copier le lien
+              </button>
+            </div>
+            <div class="lt-invite" id="ltInvite" style="display:none;">
+              <p>✅ Lien copié ! Envoie-le à un ami pour débloquer tes résultats.</p>
+            </div>
+            <div class="lt-reveal" id="ltReveal" style="display:none;">
+              <button class="btn-secondary" onclick="revealAnswers()">🔓 Voir mes erreurs</button>
+            </div>
+          </div>
+
+          <div id="ltDetailed" style="display:none;">
+            <h4 style="margin-bottom:1rem;">📝 Détail des réponses</h4>
+            <div id="ltAnswerReview"></div>
+            <div class="lt-detail-cta">
+              <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem;">
+                Prêt à vraiment progresser ? L'IA conversationnelle de Ultralengua Pro s'adapte à ton niveau.
+              </p>
+              <a href="#tarifs" class="btn-primary" style="font-size:0.85rem;">Essayer Ultralengua Pro gratuitement →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1030,237 +1254,49 @@ const LANGUAGES = [
   { id: 'nl', name: 'Néerlandais', flag: '🇳🇱' },
 ];
 
-const QUIZ_TOPICS = [
-  { key: 'vocab', names: { fr: 'Vocabulaire de base', en: 'Basic Vocabulary', es: 'Vocabulario básico', de: 'Grundwortschatz', ar: 'المفردات الأساسية', nl: 'Basiswoordenschat' } },
-  { key: 'grammar', names: { fr: 'Grammaire', en: 'Grammar', es: 'Gramática', de: 'Grammatik', ar: 'القواعد النحوية', nl: 'Grammatica' } },
-  { key: 'idioms', names: { fr: 'Expressions idiomatiques', en: 'Idioms & Expressions', es: 'Expresiones', de: 'Redewendungen', ar: 'التعابير الاصطلاحية', nl: 'Uitdrukkingen' } },
-  { key: 'culture', names: { fr: 'Culture', en: 'Culture', es: 'Cultura', de: 'Kultur', ar: 'الثقافة والحضارة', nl: 'Cultuur' } },
-  { key: 'advanced', names: { fr: 'Niveau avancé', en: 'Advanced Level', es: 'Nivel avanzado', de: 'Fortgeschritten', ar: 'مستوى متقدم', nl: 'Gevorderd' } },
-];
-
 const QUIZZES = {
-  fr: {
-    vocab: [
-      { q: 'Que signifie "livre" ?', options: ['Un meuble', 'Un ouvrage imprimé', 'Un vêtement', 'Un outil'], correct: 1 },
-      { q: 'Que signifie "maison" ?', options: ['Un véhicule', 'Un bâtiment d\'habitation', 'Un animal', 'Un arbre'], correct: 1 },
-      { q: 'Que signifie "manger" ?', options: ['Dormir', 'Courir', 'Se nourrir', 'Chanter'], correct: 2 },
-      { q: 'Que signifie "grand" ?', options: ['De petite taille', 'De taille élevée', 'Lourd', 'Léger'], correct: 1 },
-      { q: 'Que signifie "ami" ?', options: ['Un inconnu', 'Un ennemi', 'Une personne aimée', 'Un collègue'], correct: 2 },
-    ],
-    grammar: [
-      { q: 'Complétez : "Il ___ parti hier."', options: ['a', 'est', 'as', 'es'], correct: 1 },
-      { q: 'Complétez : "Nous ___ la musique."', options: ['aimons', 'aimez', 'aiment', 'aime'], correct: 0 },
-      { q: 'Complétez : "Elles ___ arriver."', options: ['viennent de', 'vient de', 'venons de', 'venez de'], correct: 0 },
-      { q: 'Quel est le participe passé de "prendre" ?', options: ['Prenu', 'Pris', 'Prendé', 'Prise'], correct: 1 },
-      { q: 'Complétez : "Je ___ faim."', options: ['suis', 'ai', 'a', 'as'], correct: 1 },
-    ],
-    idioms: [
-      { q: '"Avoir la chair de poule" signifie :', options: ['Avoir faim', 'Avoir peur/froid', 'Être en colère', 'Être fatigué'], correct: 1 },
-      { q: '"Casser sa pipe" signifie :', options: ['Mourir', 'Se fâcher', 'Tomber', 'Réparer'], correct: 0 },
-      { q: '"Mettre son grain de sel" signifie :', options: ['Cuisiner', 'Donner son avis', 'Se taire', 'Saler'], correct: 1 },
-      { q: '"Être dans la lune" signifie :', options: ['Astronaute', 'Être distrait', 'Voyager', 'Rêver'], correct: 1 },
-      { q: '"Coûter les yeux de la tête" signifie :', options: ['Être bon marché', 'Être très cher', 'Être gratuit', 'Être rare'], correct: 1 },
-    ],
-    culture: [
-      { q: 'Le 14 juillet est la fête :', options: ['Nationale', 'Religieuse', 'Mondiale', 'Locale'], correct: 0 },
-      { q: 'La baguette est un type de :', options: ['Pain', 'Vêtement', 'Danse', 'Chanson'], correct: 0 },
-      { q: 'Molière est un célèbre :', options: ['Peintre', 'Dramaturge', 'Musicien', 'Scientifique'], correct: 1 },
-      { q: 'Le Tour de France est une course :', options: ['Automobile', 'Cycliste', 'À pied', 'Équestre'], correct: 1 },
-      { q: 'Bordeaux est une région :', options: ['Minière', 'Viticole', 'Industrielle', 'Désertique'], correct: 1 },
-    ],
-    advanced: [
-      { q: 'Synonyme de "pédagogue" :', options: ['Médecin', 'Enseignant', 'Ingénieur', 'Artiste'], correct: 1 },
-      { q: 'Antonyme de "éphémère" :', options: ['Court', 'Éternel', 'Rapide', 'Fragile'], correct: 1 },
-      { q: '"Subséquent" signifie :', options: ['Antérieur', 'Suivant', 'Simultané', 'Indépendant'], correct: 1 },
-      { q: '"Élocution" signifie :', options: ['Manière de parler', 'Écriture', 'Lecture', 'Danse'], correct: 0 },
-      { q: '"Contemporain" signifie :', options: ['Ancien', 'Moderne', 'Futur', 'Passé'], correct: 1 },
-    ],
-  },
-  en: {
-    vocab: [
-      { q: 'What does "abundant" mean?', options: ['Rare', 'Plentiful', 'Tiny', 'Weak'], correct: 1 },
-      { q: 'What does "journey" mean?', options: ['A trip', 'A meal', 'A book', 'A house'], correct: 0 },
-      { q: 'What does "swift" mean?', options: ['Slow', 'Heavy', 'Fast', 'Quiet'], correct: 2 },
-      { q: 'What does "silent" mean?', options: ['Noisy', 'Quiet', 'Bright', 'Dark'], correct: 1 },
-      { q: 'What does "ancient" mean?', options: ['New', 'Young', 'Old', 'Fast'], correct: 2 },
-    ],
-    grammar: [
-      { q: 'Fill in: "She ___ to the store yesterday."', options: ['go', 'goes', 'went', 'gone'], correct: 2 },
-      { q: 'Fill in: "They ___ been waiting for hours."', options: ['has', 'have', 'had', 'having'], correct: 1 },
-      { q: 'Fill in: "He is taller ___ me."', options: ['that', 'then', 'than', 'this'], correct: 2 },
-      { q: 'Fill in: "I ___ like coffee."', options: ['am not', 'do not', 'is not', 'not'], correct: 1 },
-      { q: 'Fill in: "We ___ going to travel."', options: ['is', 'am', 'are', 'be'], correct: 2 },
-    ],
-    idioms: [
-      { q: '"Break the ice" means:', options: ['To freeze', 'To initiate conversation', 'To fall', 'To fight'], correct: 1 },
-      { q: '"Hit the sack" means:', options: ['To fight', 'To cook', 'To go to sleep', 'To dance'], correct: 2 },
-      { q: '"Piece of cake" means:', options: ['Very difficult', 'Very easy', 'Delicious', 'Broken'], correct: 1 },
-      { q: '"Under the weather" means:', options: ['Rainy', 'Feeling ill', 'Sunny', 'Cold'], correct: 1 },
-      { q: '"Spill the beans" means:', options: ['To drop food', 'To reveal a secret', 'To cry', 'To laugh'], correct: 1 },
-    ],
-    culture: [
-      { q: 'Thanksgiving is celebrated in:', options: ['January', 'November', 'March', 'July'], correct: 1 },
-      { q: 'Stonehenge is located in:', options: ['France', 'Germany', 'England', 'Spain'], correct: 2 },
-      { q: 'Shakespeare wrote "Hamlet".', options: ['True', 'False', 'Not sure', 'Partly'], correct: 0 },
-      { q: 'The Beatles are from:', options: ['London', 'Liverpool', 'Manchester', 'Dublin'], correct: 1 },
-      { q: 'The Queen\'s Guard protects:', options: ['Big Ben', 'Buckingham Palace', 'Tower Bridge', 'Hyde Park'], correct: 1 },
-    ],
-    advanced: [
-      { q: 'Antonym of "benevolent":', options: ['Kind', 'Generous', 'Malevolent', 'Gentle'], correct: 2 },
-      { q: '"Ubiquitous" means:', options: ['Rare', 'Present everywhere', 'Underground', 'Ancient'], correct: 1 },
-      { q: '"Ephemeral" means:', options: ['Eternal', 'Short-lived', 'Powerful', 'Weak'], correct: 1 },
-      { q: '"Eloquent" means:', options: ['Fluent in speech', 'Quiet', 'Confused', 'Angry'], correct: 0 },
-      { q: '"Resilient" means:', options: ['Fragile', 'Able to recover quickly', 'Stubborn', 'Weak'], correct: 1 },
-    ],
-  },
-  es: {
-    vocab: [
-      { q: '¿Qué significa "cotidiano"?', options: ['Extraño', 'Diario', 'Rápido', 'Lento'], correct: 1 },
-      { q: '¿Qué significa "hermoso"?', options: ['Feo', 'Bonito', 'Alto', 'Bajo'], correct: 1 },
-      { q: '¿Qué significa "caminar"?', options: ['Correr', 'Andar', 'Saltar', 'Nadar'], correct: 1 },
-      { q: '¿Qué significa "pequeño"?', options: ['Grande', 'Chico', 'Rápido', 'Lento'], correct: 1 },
-      { q: '¿Qué significa "trabajar"?', options: ['Descansar', 'Jugar', 'Laborar', 'Dormir'], correct: 2 },
-    ],
-    grammar: [
-      { q: 'Completa: "Ellos ___ estudiantes."', options: ['son', 'están', 'es', 'está'], correct: 0 },
-      { q: 'Completa: "Ella ___ muy alta."', options: ['está', 'tiene', 'es', 'hay'], correct: 2 },
-      { q: 'Completa: "Nosotros ___ al mercado."', options: ['vamos', 'van', 'va', 'voy'], correct: 0 },
-      { q: 'Completa: "Yo ___ hambre."', options: ['soy', 'estoy', 'tengo', 'tiene'], correct: 2 },
-      { q: 'Completa: "Ellas ___ felices."', options: ['son', 'están', 'está', 'es'], correct: 1 },
-    ],
-    idioms: [
-      { q: '"Estar en las nubes" significa:', options: ['Estar feliz', 'Estar distraído', 'Volar', 'Dormir'], correct: 1 },
-      { q: '"Ser pan comido" significa:', options: ['Ser difícil', 'Ser muy fácil', 'Tener hambre', 'Cocinar'], correct: 1 },
-      { q: '"No hay mal que por bien no venga" significa:', options: ['Todo es malo', 'Lo malo trae algo bueno', 'Nunca hay bien', 'Siempre es igual'], correct: 1 },
-      { q: '"Ponerse las pilas" significa:', options: ['Descansar', 'Activar y trabajar', 'Comprar pilas', 'Dormir'], correct: 1 },
-      { q: '"Costar un ojo de la cara" significa:', options: ['Ser barato', 'Ser muy caro', 'Estar herido', 'Ver mal'], correct: 1 },
-    ],
-    culture: [
-      { q: 'La Sagrada Familia está en:', options: ['Madrid', 'Barcelona', 'Sevilla', 'Valencia'], correct: 1 },
-      { q: 'Pablo Picasso era:', options: ['Escritor', 'Pintor', 'Músico', 'Arquitecto'], correct: 1 },
-      { q: 'El Día de los Muertos se celebra en:', options: ['España', 'Argentina', 'México', 'Chile'], correct: 2 },
-      { q: 'El flamenco es un baile:', options: ['Catalán', 'Andaluz', 'Gallego', 'Vasco'], correct: 1 },
-      { q: 'La paella es un plato:', options: ['Madrileño', 'Andaluz', 'Valenciano', 'Gallego'], correct: 2 },
-    ],
-    advanced: [
-      { q: 'Sinónimo de "alegría":', options: ['Tristeza', 'Felicidad', 'Enojo', 'Miedo'], correct: 1 },
-      { q: 'Antónimo de "generoso":', options: ['Amable', 'Tacaño', 'Noble', 'Valiente'], correct: 1 },
-      { q: '"Cátedra" significa:', options: ['Catedral', 'Puesto de profesor', 'Categoría', 'Carrera'], correct: 1 },
-      { q: '"Elocuente" significa:', options: ['Que habla bien', 'Que corre rápido', 'Que escucha', 'Que escribe'], correct: 0 },
-      { q: '"Ímpetu" significa:', options: ['Pereza', 'Energía', 'Tristeza', 'Miedo'], correct: 1 },
-    ],
-  },
-  de: {
-    vocab: [
-      { q: 'Was bedeutet "Haus"?', options: ['Ein Fahrzeug', 'Ein Gebäude zum Wohnen', 'Ein Tier', 'Ein Baum'], correct: 1 },
-      { q: 'Was bedeutet "gehen"?', options: ['Rennen', 'Sich zu Fuß bewegen', 'Schwimmen', 'Springen'], correct: 1 },
-      { q: 'Was bedeutet "schön"?', options: ['Hässlich', 'Hübsch', 'Groß', 'Klein'], correct: 1 },
-      { q: 'Was bedeutet "essen"?', options: ['Trinken', 'Nahrung zu sich nehmen', 'Schlafen', 'Laufen'], correct: 1 },
-      { q: 'Was bedeutet "groß"?', options: ['Klein', 'Schwer', 'Von hoher Statur', 'Leicht'], correct: 2 },
-    ],
-    grammar: [
-      { q: 'Ergänze: "Ich ___ ein Buch."', options: ['habe', 'bin', 'lese', 'gehe'], correct: 2 },
-      { q: 'Ergänze: "Er ___ nach Hause."', options: ['gehe', 'gehst', 'geht', 'gehen'], correct: 2 },
-      { q: 'Ergänze: "Sie ___ eine Ärztin."', options: ['bist', 'ist', 'sind', 'seid'], correct: 1 },
-      { q: 'Ergänze: "Wir ___ im Park."', options: ['bin', 'bist', 'sind', 'seid'], correct: 2 },
-      { q: 'Ergänze: "Ihr ___ fleißig."', options: ['bist', 'ist', 'sind', 'seid'], correct: 3 },
-    ],
-    idioms: [
-      { q: '"Da steppt der Bär" bedeutet:', options: ['Es ist langweilig', 'Es ist eine tolle Party', 'Es ist gefährlich', 'Es ist leise'], correct: 1 },
-      { q: '"Tomaten auf den Augen haben" bedeutet:', options: ['Weit sehen', 'Etwas nicht sehen', 'Kochen', 'Ernten'], correct: 1 },
-      { q: '"Ich verstehe nur Bahnhof" bedeutet:', options: ['Ich liebe Züge', 'Ich verstehe nichts', 'Ich reise gern', 'Ich bin am Bahnhof'], correct: 1 },
-      { q: '"Den Nagel auf den Kopf treffen" bedeutet:', options: ['Danebenliegen', 'Das Richtige sagen', 'Hämmern', 'Bauen'], correct: 1 },
-      { q: '"Die Daumen drücken" bedeutet:', options: ['Schmerzen haben', 'Glück wünschen', 'Drücken', 'Malen'], correct: 1 },
-    ],
-    culture: [
-      { q: 'Das Oktoberfest findet statt in:', options: ['Berlin', 'Hamburg', 'München', 'Köln'], correct: 2 },
-      { q: 'Berlin ist die Hauptstadt von:', options: ['Österreich', 'der Schweiz', 'Deutschland', 'Polen'], correct: 2 },
-      { q: 'Johann Sebastian Bach war:', options: ['Maler', 'Komponist', 'Arzt', 'Ingenieur'], correct: 1 },
-      { q: 'Der Rhein ist ein:', options: ['Berg', 'Fluss', 'See', 'Wald'], correct: 1 },
-      { q: 'Die Autobahn ist bekannt für:', options: ['Tempolimit', 'Keine Geschwindigkeitsbegrenzung', 'Viele Ampeln', 'Kurven'], correct: 1 },
-    ],
-    advanced: [
-      { q: 'Synonym für "beginnen":', options: ['Enden', 'Anfangen', 'Warten', 'Aufhören'], correct: 1 },
-      { q: '"Schadenfreude" bedeutet:', options: ['Traurigkeit', 'Freude am Schaden anderer', 'Glück', 'Wut'], correct: 1 },
-      { q: '"Vergänglich" bedeutet:', options: ['Ewig', 'Nicht dauerhaft', 'Stark', 'Schnell'], correct: 1 },
-      { q: '"Stur" bedeutet:', options: ['Freundlich', 'Dickköpfig', 'Schnell', 'Leise'], correct: 1 },
-      { q: 'Antonym von "mutig":', options: ['Tapfer', 'Feige', 'Stark', 'Schnell'], correct: 1 },
-    ],
-  },
-  ar: {
-    vocab: [
-      { q: 'ما معنى "مكتبة" ؟', options: ['مبنى للدراسة', 'مكان لحفظ الكتب', 'مكان للطبخ', 'غرفة النوم'], correct: 1 },
-      { q: 'ما معنى "شمس" ؟', options: ['قمر', 'نجم يضيء النهار', 'سحاب', 'ريح'], correct: 1 },
-      { q: 'ما معنى "بحر" ؟', options: ['نهر', 'بحيرة', 'مساحة واسعة من الماء', 'مسبح'], correct: 2 },
-      { q: 'ما معنى "طائر" ؟', options: ['حيوان يطير', 'حيوان يسبح', 'حيوان يمشي', 'حيوان يزحف'], correct: 0 },
-      { q: 'ما معنى "جبل" ؟', options: ['سهل', 'وادٍ', 'مرتفع طبيعي', 'تل صغير'], correct: 2 },
-    ],
-    grammar: [
-      { q: 'أكمل: "هو ___ إلى المدرسة."', options: ['ذهب', 'يذهب', 'ذاهب', 'اذهب'], correct: 2 },
-      { q: 'جمع كلمة "كتاب":', options: ['كتاب', 'كتب', 'كتابة', 'كاتب'], correct: 1 },
-      { q: 'جمع كلمة "معلم":', options: ['معلمون', 'مدرسون', 'معلمين', 'معالم'], correct: 0 },
-      { q: 'أكمل: "أنا ___ الدرس."', options: ['أقرأ', 'أدرس', 'أكتب', 'أسمع'], correct: 1 },
-      { q: 'أكمل: "الطالبان ___ مجتهدان."', options: ['هو', 'هي', 'هما', 'هم'], correct: 2 },
-    ],
-    idioms: [
-      { q: '"جزاك الله خيراً" تعني:', options: ['شكراً', 'الله يعطيك خيراً', 'مع السلامة', 'عفواً'], correct: 0 },
-      { q: '"صباح الخير" تُقال في:', options: ['المساء', 'الصباح', 'الليل', 'الظهر'], correct: 1 },
-      { q: '"أنت في عين الله" تعني:', options: ['أنت غاضب', 'أنت بأمان', 'في خطر', 'أنت سعيد'], correct: 1 },
-      { q: '"الحمد لله على السلامة" تُقال:', options: ['بعد الطعام', 'بعد السفر', 'قبل النوم', 'أثناء العمل'], correct: 1 },
-      { q: '"بسم الله الرحمن الرحيم" تُقال:', options: ['عند الانتهاء', 'عند البدء', 'عند النوم', 'عند السفر'], correct: 1 },
-    ],
-    culture: [
-      { q: 'مكة المكرمة تقع في:', options: ['مصر', 'السعودية', 'الأردن', 'سوريا'], correct: 1 },
-      { q: 'الأهرامات تقع في:', options: ['العراق', 'مصر', 'السودان', 'تونس'], correct: 1 },
-      { q: 'عدد حروف اللغة العربية:', options: ['26', '28', '30', '32'], correct: 1 },
-      { q: 'جامعة القرويين تقع في:', options: ['الجزائر', 'تونس', 'المغرب', 'ليبيا'], correct: 2 },
-      { q: 'من أنواع الخط العربي:', options: ['الكوفي', 'الروماني', 'اللاتيني', 'الهندي'], correct: 0 },
-    ],
-    advanced: [
-      { q: 'مضاد كلمة "كبير":', options: ['ضخم', 'صغير', 'جميل', 'طويل'], correct: 1 },
-      { q: 'مرادف كلمة "جميل":', options: ['قبيح', 'وسيم', 'طويل', 'سريع'], correct: 1 },
-      { q: '"فصيح" تعني:', options: ['غني', 'بليغ في الكلام', 'فقير', 'قوي'], correct: 1 },
-      { q: '"مثابرة" تعني:', options: ['توقف', 'استمرار', 'سقوط', 'هروب'], correct: 1 },
-      { q: 'ضد "متواضع":', options: ['خجول', 'متكبر', 'لطيف', 'كريم'], correct: 1 },
-    ],
-  },
-  nl: {
-    vocab: [
-      { q: 'Wat betekent "huis"?', options: ['Een auto', 'Een gebouw om in te wonen', 'Een dier', 'Een boom'], correct: 1 },
-      { q: 'Wat betekent "lopen"?', options: ['Rennen', 'Zich te voet verplaatsen', 'Zwemmen', 'Springen'], correct: 1 },
-      { q: 'Wat betekent "mooi"?', options: ['Lelijk', 'Aantrekkelijk', 'Groot', 'Klein'], correct: 1 },
-      { q: 'Wat betekent "water"?', options: ['Melk', 'Vloeistof om te drinken', 'Bier', 'Sap'], correct: 1 },
-      { q: 'Wat betekent "boek"?', options: ['Een film', 'Een object om te lezen', 'Een lied', 'Een schilderij'], correct: 1 },
-    ],
-    grammar: [
-      { q: 'Vul aan: "Ik ___ naar school."', options: ['loop', 'loopt', 'lopen', 'liep'], correct: 0 },
-      { q: 'Vul aan: "Hij ___ een boek."', options: ['lees', 'leest', 'lezen', 'las'], correct: 1 },
-      { q: 'Vul aan: "Wij ___ in Nederland."', options: ['woon', 'woont', 'wonen', 'woonden'], correct: 2 },
-      { q: 'Vul aan: "Zij ___ naar huis."', options: ['ga', 'gaat', 'gaan', 'ging'], correct: 1 },
-      { q: 'Vul aan: "Jullie ___ aardig."', options: ['ben', 'bent', 'zijn', 'ben'], correct: 2 },
-    ],
-    idioms: [
-      { q: '"Het regent pijpenstelen" betekent:', options: ['Het is droog', 'Het regent heel hard', 'Het sneeuwt', 'Het is zonnig'], correct: 1 },
-      { q: '"De kat uit de boom kijken" betekent:', options: ['Klimmen', 'Afwachten', 'Spelen', 'Jagen'], correct: 1 },
-      { q: '"Met de deur in huis vallen" betekent:', options: ['Aankloppen', 'Direct ter zake komen', 'Vertrekken', 'Sluiten'], correct: 1 },
-      { q: '"Door de mand vallen" betekent:', options: ['Vallen', 'Betrapt worden', 'Winnen', 'Springen'], correct: 1 },
-      { q: '"Een beer van een kerel" betekent:', options: ['Een zwakke man', 'Een sterke man', 'Een kleine man', 'Een oude man'], correct: 1 },
-    ],
-    culture: [
-      { q: 'Amsterdam is de hoofdstad van:', options: ['België', 'Nederland', 'Duitsland', 'Frankrijk'], correct: 1 },
-      { q: 'Koning Willem-Alexander is de:', options: ['President', 'Koning', 'Minister', 'Burgemeester'], correct: 1 },
-      { q: 'Rembrandt was een:', options: ['Schrijver', 'Schilder', 'Muzikant', 'Wetenschapper'], correct: 1 },
-      { q: 'Kaas is typisch:', options: ['Frans', 'Nederlands', 'Duits', 'Italiaans'], correct: 1 },
-      { q: 'De grachten zijn beroemd in:', options: ['Rotterdam', 'Amsterdam', 'Utrecht', 'Den Haag'], correct: 1 },
-    ],
-    advanced: [
-      { q: 'Synoniem van "mooi":', options: ['lelijk', 'prachtig', 'snel', 'groot'], correct: 1 },
-      { q: 'Antoniem van "groot":', options: ['klein', 'breed', 'lang', 'zwaar'], correct: 0 },
-      { q: '"Enerverend" betekent:', options: ['Saai', 'Opwindend', 'Rustig', 'Vermoeiend'], correct: 1 },
-      { q: '"Stipt" betekent:', options: ['Te laat', 'Precies op tijd', 'Vroeg', 'Langzaam'], correct: 1 },
-      { q: '"Overbodig" betekent:', options: ['Nodig', 'Niet nodig', 'Belangrijk', 'Dringend'], correct: 1 },
-    ],
-  },
+  fr: [
+    { q: 'Que signifie "contemporain" ?', options: ['Ancien', 'Moderne', 'Rapide', 'Lent'], correct: 1 },
+    { q: 'Complétez : "Il ___ parti hier."', options: ['a', 'est', 'as', 'es'], correct: 1 },
+    { q: 'Quel est le pluriel de "cheval" ?', options: ['chevals', 'chevaux', 'chevales', 'chevaus'], correct: 1 },
+    { q: '"Avoir la chair de poule" signifie :', options: ['Avoir faim', 'Avoir peur/froid', 'Être en colère', 'Être fatigué'], correct: 1 },
+    { q: 'Quel mot est un synonyme de "pédagogue" ?', options: ['Médecin', 'Enseignant', 'Ingénieur', 'Artiste'], correct: 1 },
+  ],
+  en: [
+    { q: 'What does "ubiquitous" mean?', options: ['Rare', 'Partout présent', 'Souterrain', 'Ancien'], correct: 1 },
+    { q: 'Fill in: "She ___ to the store yesterday."', options: ['go', 'goes', 'went', 'gone'], correct: 2 },
+    { q: 'Which is the correct spelling?', options: ['Recieve', 'Receive', 'Receeve', 'Reciave'], correct: 1 },
+    { q: '"Break the ice" means:', options: ['Casser de la glace', 'Briser la glace (social)', 'Tomber', 'Se blesser'], correct: 1 },
+    { q: 'What is an antonym of "benevolent"?', options: ['Kind', 'Generous', 'Malevolent', 'Gentle'], correct: 2 },
+  ],
+  es: [
+    { q: '¿Qué significa "cotidiano"?', options: ['Extraño', 'Diario/cotidiano', 'Rápido', 'Lento'], correct: 1 },
+    { q: 'Completa: "Ellos ___ estudiantes."', options: ['son', 'están', 'es', 'está'], correct: 0 },
+    { q: '¿Cuál es el plural de "canción"?', options: ['cancions', 'canciones', 'canciónes', 'cancionas'], correct: 1 },
+    { q: '"Estar en las nubes" significa:', options: ['Estar feliz', 'Estar distraído', 'Volar', 'Dormir'], correct: 1 },
+    { q: 'Sinónimo de "alegría":', options: ['Tristeza', 'Felicidad', 'Enojo', 'Miedo'], correct: 1 },
+  ],
+  de: [
+    { q: 'Was bedeutet "Schadenfreude"?', options: ['Freude am Schaden', 'Traurigkeit', 'Glück', 'Wut'], correct: 0 },
+    { q: 'Ergänze: "Ich ___ ein Buch."', options: ['habe', 'bin', 'lese', 'gehe'], correct: 2 },
+    { q: 'Der Plural von "Kind" ist:', options: ['Kinder', 'Kindern', 'Kindes', 'Kinds'], correct: 0 },
+    { q: '"Da steppt der Bär" bedeutet:', options: ['Es ist langweilig', 'Es ist eine tolle Party', 'Es ist gefährlich', 'Es ist leise'], correct: 1 },
+    { q: 'Was ist ein Synonym für "beginnen"?', options: ['Enden', 'Anfangen', 'Warten', 'Aufhören'], correct: 1 },
+  ],
+  ar: [
+    { q: 'ما معنى "مكتبة" ؟', options: ['مدرسة', 'مكتبة', 'مطبخ', 'غرفة'], correct: 1 },
+    { q: 'أكمل: "هو ___ في المدرسة."', options: ['ذهب', 'يذهب', 'ذاهب', 'اذهب'], correct: 1 },
+    { q: 'جمع كلمة "معلم":', options: ['معلمون', 'معلمات', 'معلمين', 'معالم'], correct: 0 },
+    { q: '"جزاك الله خيراً" تعني:', options: ['شكراً', 'الله يعطيك خيراً', 'مع السلامة', 'عفواً'], correct: 1 },
+    { q: 'مضاد كلمة "كبير":', options: ['ضخم', 'صغير', 'جميل', 'طويل'], correct: 1 },
+  ],
+  nl: [
+    { q: 'Wat betekent "fiets"?', options: ['Auto', 'Fiets', 'Trein', 'Vliegtuig'], correct: 1 },
+    { q: 'Vul aan: "Ik ___ naar school."', options: ['loop', 'loopt', 'lopen', 'liep'], correct: 0 },
+    { q: 'Het meervoud van "boek" is:', options: ['boeken', 'boek', 'boekens', 'boekte'], correct: 0 },
+    { q: '"Het regent pijpenstelen" betekent:', options: ['Het is droog', 'Het regent heel hard', 'Het sneeuwt', 'Het is zonnig'], correct: 1 },
+    { q: 'Synoniem van "mooi":', options: ['lelijk', 'prachtig', 'snel', 'groot'], correct: 1 },
+  ],
 };
 
 const STORIES = {
@@ -1376,8 +1412,7 @@ function resetProgress() {
 
 // ── QUIZ ENGINE ──
 
-
-let quizState = { lang: null, topic: null, questions: [], index: 0, score: 0, streak: 0, answered: false };
+let quizState = { lang: null, questions: [], index: 0, score: 0, streak: 0, answered: false };
 
 function getBadge(score, total) {
   const pct = total > 0 ? score / total : 0;
@@ -1388,45 +1423,22 @@ function getBadge(score, total) {
 }
 
 function initQuiz() {
-  document.getElementById('quizScore').style.display = 'flex';
   const container = document.getElementById('quizLangBtns');
   container.innerHTML = LANGUAGES.map(l =>
-    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="showQuizTopics('${l.id}')">${l.flag} ${l.name}</button>`
+    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="startQuiz('${l.id}')">${l.flag} ${l.name}</button>`
   ).join('');
-  document.getElementById('quizContent').innerHTML = '<div class="quiz-question">Choisis une langue</div><div class="quiz-prompt">Sélectionne une langue pour voir les quiz disponibles.</div>';
-  document.getElementById('quizCorrectScore').textContent = '0';
-  document.getElementById('quizTotalScore').textContent = '0';
-  document.getElementById('quizStreak').textContent = '0';
 }
 
-function showQuizTopics(langId) {
+function startQuiz(langId) {
+  const p = getProgress();
+  const qs = QUIZZES[langId] || [];
+  if (qs.length === 0) {
+    document.getElementById('quizContent').innerHTML = '<div class="quiz-question">Quiz bientôt disponible</div><div class="quiz-prompt">Cette langue aura bientôt ses propres questions. Revenez plus tard !</div>';
+    return;
+  }
+  const shuffled = [...qs].sort(() => Math.random() - 0.5).slice(0, Math.min(5, qs.length));
+  quizState = { lang: langId, questions: shuffled, index: 0, score: 0, streak: 0, answered: false };
   document.querySelectorAll('.quiz-lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === langId));
-  const lang = LANGUAGES.find(l => l.id === langId);
-  const topics = QUIZZES[langId];
-  if (!topics) {
-    document.getElementById('quizContent').innerHTML = '<div class="quiz-question">Quiz bientôt disponibles</div><div class="quiz-prompt">Cette langue aura bientôt ses quiz. Revenez plus tard !</div>';
-    return;
-  }
-  const langName = lang ? lang.name : langId;
-  let html = `<div class="quiz-question">${lang.flag} ${langName}</div>
-    <div class="quiz-prompt">Choisis un thème de quiz :</div>
-    <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">`;
-  QUIZ_TOPICS.forEach(t => {
-    const topicName = t.names[langId] || t.key;
-    html += `<button class="quiz-lang-btn" onclick="startQuiz('${langId}','${t.key}')">📖 ${topicName}</button>`;
-  });
-  html += '</div>';
-  document.getElementById('quizContent').innerHTML = html;
-}
-
-function startQuiz(langId, topicKey) {
-  const topicQs = QUIZZES[langId] && QUIZZES[langId][topicKey];
-  if (!topicQs || topicQs.length === 0) {
-    document.getElementById('quizContent').innerHTML = '<div class="quiz-question">Quiz bientôt disponible</div><div class="quiz-prompt">Ce quiz sera bientôt prêt. Revenez plus tard !</div>';
-    return;
-  }
-  const shuffled = [...topicQs].sort(() => Math.random() - 0.5).slice(0, 5);
-  quizState = { lang: langId, topic: topicKey, questions: shuffled, index: 0, score: 0, streak: 0, answered: false };
   renderQuiz();
 }
 
@@ -1501,16 +1513,15 @@ function nextQuiz() {
 }
 
 function finishQuiz() {
-  const { questions, score, streak, lang, topic } = quizState;
+  const { questions, score, streak, lang } = quizState;
   const total = questions.length;
   const pct = total > 0 ? Math.round(score / total * 100) : 0;
   const langName = LANGUAGES.find(l => l.id === lang)?.name || '';
-  const topicName = QUIZ_TOPICS.find(t => t.key === topic)?.names?.[lang] || '';
   const badge = getBadge(score, total);
   if (badge) {
     const p = getProgress();
-    if (!p.badges.includes(`${lang}-${topic}-${badge.cls}`)) {
-      p.badges.push(`${lang}-${topic}-${badge.cls}`);
+    if (!p.badges.includes(`${lang}-${badge.cls}`)) {
+      p.badges.push(`${lang}-${badge.cls}`);
       saveProgress(p);
       updateProgressDashboard();
     }
@@ -1518,10 +1529,10 @@ function finishQuiz() {
   let html = `<div class="quiz-result">
     <h3>🎉 Quiz terminé !</h3>
     <div class="score-big">${score}/${total}</div>
-    <p>${langName} · ${topicName} · ${pct}% de bonnes réponses</p>`;
-  if (badge) html += `<p><span class="quiz-badge ${badge.cls}" style="font-size:1rem;padding:0.4rem 1.2rem;">${badge.label}</span></p>`;
-  html += `<button class="btn-primary" onclick="showQuizTopics('${lang}')" style="margin-top:1rem;">📖 Autre thème</button>
-    <button class="btn-secondary" onclick="initQuiz()" style="margin-left:0.5rem;">⬅️ Autre langue</button>
+    <p>${langName} · ${pct}% de bonnes réponses</p>`;
+  if (badge) html += `<p><span class="quiz-badge ${badge.cls}" style="font-size:1rem;padding:0.4rem 1.2rem;">${badge.label} — ${langName}</span></p>`;
+  html += `<button class="btn-primary" onclick="startQuiz('${lang}')" style="margin-top:1rem;">🔄 Refaire le quiz</button>
+    <button class="btn-secondary" onclick="initQuiz();document.getElementById('quizContent').innerHTML='<div class=\\'quiz-question\\'>Choisis une langue pour commencer</div><div class=\\'quiz-prompt\\'>Sélectionne une langue ci-dessus pour démarrer un quiz interactif.</div>';document.querySelectorAll('.quiz-lang-btn').forEach(b=>b.classList.remove('active'));" style="margin-left:0.5rem;">⬅️ Autre langue</button>
   </div>`;
   document.getElementById('quizContent').innerHTML = html;
   document.getElementById('quizCorrectScore').textContent = score;
@@ -1630,24 +1641,255 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── HASH ROUTING ──
-function handleHash() {
-  const hash = window.location.hash.replace('#', '');
-  if (hash) {
-    const el = document.getElementById(hash);
-    if (el) {
-      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-    }
-  }
-}
-window.addEventListener('hashchange', handleHash);
-
 // ── INIT ──
 initQuiz();
 initStories();
 initGlossary();
 updateProgressDashboard();
-handleHash();
+
+// ── LEVEL TEST VIRAL ──
+
+const LEVEL_QUESTIONS = [
+  {
+    q: 'Que signifie le mot anglais "abundant" ?',
+    lang: '🇬🇧 Anglais',
+    options: ['Rare', 'Abondant', 'Faible', 'Petit'],
+    correct: 1
+  },
+  {
+    q: 'Complétez la phrase : "Il ___ arrivé hier."',
+    lang: '🇫🇷 Français',
+    options: ['a', 'est', 'as', 'es'],
+    correct: 1
+  },
+  {
+    q: '¿Cómo se dice "bonjour" en español?',
+    lang: '🇪🇸 Espagnol',
+    options: ['Gracias', 'Adiós', 'Hola', 'Buenas noches'],
+    correct: 2
+  },
+  {
+    q: 'Was bedeutet das Wort "Hund" auf Französisch?',
+    lang: '🇩🇪 Allemand',
+    options: ['Chat', 'Oiseau', 'Poisson', 'Chien'],
+    correct: 3
+  },
+  {
+    q: 'Which sentence is grammatically correct?',
+    lang: '🇬🇧 Anglais',
+    options: [
+      'She don\'t like coffee',
+      'She doesn\'t likes coffee',
+      'She doesn\'t like coffee',
+      'She not like coffee'
+    ],
+    correct: 2
+  }
+];
+
+const LEVEL_MAP = [
+  { min: 0, level: 'A1', label: 'Débutant', emoji: '🌱', desc: 'Tu commences tout juste l\'aventure multilingue.' },
+  { min: 1, level: 'A2', label: 'Élémentaire', emoji: '🌿', desc: 'Les bases sont là, continue comme ça !' },
+  { min: 2, level: 'B1', label: 'Intermédiaire', emoji: '🌳', desc: 'Tu te débrouilles, mais il reste du chemin.' },
+  { min: 3, level: 'B2', label: 'Intermédiaire+', emoji: '🔥', desc: 'Solide ! Tu as une bonne culture linguistique.' },
+  { min: 4, level: 'C1', label: 'Avancé', emoji: '💪', desc: 'Presque bilingue ! Très impressionnant.' },
+  { min: 5, level: 'C2', label: 'Maîtrise', emoji: '👑', desc: 'Parfait ! Tu es un véritable polyglotte.' },
+];
+
+let ltState = { index: 0, score: 0, answers: [], revealed: false };
+let ltShared = false;
+
+function startLevelTest() {
+  ltState = { index: 0, score: 0, answers: [], revealed: false };
+  ltShared = false;
+  document.getElementById('ltStart').style.display = 'none';
+  document.getElementById('ltResult').style.display = 'none';
+  document.getElementById('ltQuestion').style.display = 'block';
+  renderLevelQuestion();
+}
+
+function renderLevelQuestion() {
+  const q = LEVEL_QUESTIONS[ltState.index];
+  const total = LEVEL_QUESTIONS.length;
+  document.getElementById('ltProgressFill').style.width = ((ltState.index + 1) / total * 100) + '%';
+  document.getElementById('ltProgressText').textContent = `${ltState.index + 1}/${total}`;
+  document.getElementById('ltLangTag').textContent = q.lang;
+  document.getElementById('ltQText').textContent = q.q;
+  document.getElementById('ltFeedback').className = 'lt-feedback';
+  document.getElementById('ltFeedback').style.display = 'none';
+
+  let html = '';
+  q.options.forEach((opt, i) => {
+    html += `<button class="lt-option" data-idx="${i}" onclick="answerLevelQ(${i})">${opt}</button>`;
+  });
+  document.getElementById('ltOptions').innerHTML = html;
+}
+
+function answerLevelQ(selected) {
+  const q = LEVEL_QUESTIONS[ltState.index];
+  const opts = document.querySelectorAll('#ltOptions .lt-option');
+  opts.forEach((el, i) => {
+    el.classList.add('disabled');
+    el.onclick = null;
+    if (i === q.correct) el.classList.add('correct');
+    if (i === selected && i !== q.correct) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById('ltFeedback');
+  const isCorrect = selected === q.correct;
+  if (isCorrect) {
+    ltState.score++;
+    fb.className = 'lt-feedback ok show';
+    fb.textContent = '✅ Bien joué !';
+  } else {
+    fb.className = 'lt-feedback ko show';
+    fb.textContent = `❌ La bonne réponse était : "${q.options[q.correct]}"`;
+  }
+
+  ltState.answers.push({
+    question: q.q,
+    lang: q.lang,
+    selected: q.options[selected],
+    correct: q.options[q.correct],
+    isCorrect
+  });
+
+  setTimeout(() => {
+    ltState.index++;
+    if (ltState.index >= LEVEL_QUESTIONS.length) {
+      showLevelResult();
+    } else {
+      renderLevelQuestion();
+    }
+  }, 1200);
+}
+
+function showLevelResult() {
+  document.getElementById('ltQuestion').style.display = 'none';
+  document.getElementById('ltResult').style.display = 'block';
+
+  const score = ltState.score;
+  const levelInfo = LEVEL_MAP.find(l => l.min === score) || LEVEL_MAP[LEVEL_MAP.length - 1];
+
+  document.getElementById('ltResultBadge').textContent = levelInfo.emoji;
+  document.getElementById('ltResultLevel').textContent = levelInfo.level;
+  document.getElementById('ltResultLevel').style.color = score >= 4 ? 'var(--gold)' : score >= 3 ? 'var(--gold-light)' : 'var(--paper)';
+  document.getElementById('ltResultNum').textContent = score;
+  document.getElementById('ltResultDesc').textContent = levelInfo.desc;
+
+  document.getElementById('ltShareSection').style.display = 'block';
+  document.getElementById('ltDetailed').style.display = 'none';
+  document.getElementById('ltReveal').style.display = 'none';
+  document.getElementById('ltInvite').style.display = 'none';
+
+  // Save to localStorage so we can check referral
+  localStorage.setItem('lt_result', JSON.stringify({
+    score,
+    level: levelInfo.level,
+    label: levelInfo.label,
+    timestamp: Date.now()
+  }));
+}
+
+function shareTikTok() {
+  // Generate result image
+  const card = document.getElementById('ltResultCard');
+
+  html2canvas(card, {
+    backgroundColor: '#1a1a1a',
+    scale: 2,
+    useCORS: true,
+    logging: false
+  }).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    // Open TikTok share with the image embedded
+    const text = encodeURIComponent(
+      `🌍 Test de niveau multilingue : ${localStorage.getItem('lt_result') ? JSON.parse(localStorage.getItem('lt_result')).level : '?'}/C2\nJ'ai fait ${ltState.score}/5 sur Ultralengua Pro. Et toi ?\n\nFais le test ici 👇`
+    );
+    const url = encodeURIComponent('https://ucfzem.github.io/ultralengua-pro/?ref=' + encodeURIComponent('tiktok_' + Date.now()));
+
+    // Try to open TikTok app, fallback to copy
+    const tiktokUrl = `https://www.tiktok.com/upload?description=${text}`;
+    window.open(tiktokUrl, '_blank');
+
+    // Also save image to clipboard if possible
+    canvas.toBlob(blob => {
+      try {
+        navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]).then(() => {
+          showToast('📱 Image copiée ! Colle-la dans TikTok avec le lien.');
+        }).catch(() => {});
+      } catch(e) {}
+    });
+
+    markShared();
+  }).catch(() => {
+    // Fallback: just copy text
+    copyShareLink();
+  });
+}
+
+function copyShareLink() {
+  const text = `🌍 Test de niveau multilingue sur Ultralengua Pro !\nJ'ai fait ${ltState.score}/5. Et toi ?\n\nFais le test ici : https://ucfzem.github.io/ultralengua-pro/?ref=${encodeURIComponent('share_' + Date.now())}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('🔗 Lien copié ! Partage-le avec tes amis.');
+    markShared();
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('🔗 Lien copié !');
+    markShared();
+  });
+}
+
+function markShared() {
+  if (ltShared) return;
+  ltShared = true;
+  document.getElementById('ltInvite').style.display = 'block';
+  document.getElementById('ltReveal').style.display = 'block';
+  document.getElementById('ltShareSection').querySelector('.lt-share-title').textContent =
+    '✅ Merci ! Tes erreurs détaillées sont débloquées.';
+}
+
+function revealAnswers() {
+  document.getElementById('ltDetailed').style.display = 'block';
+  document.getElementById('ltShareSection').style.display = 'none';
+
+  let html = '';
+  ltState.answers.forEach((a, i) => {
+    const icon = a.isCorrect ? '✅' : '❌';
+    const cls = a.isCorrect ? 'good' : 'bad';
+    html += `<div class="lt-answer-item">
+      <div class="qa-lang">Q${i + 1} · ${a.lang}</div>
+      <div class="qa-q">${a.question}</div>
+      <div class="qa-a ${cls}">${icon} Ta réponse : ${a.selected}</div>
+      ${!a.isCorrect ? `<div class="qa-a good" style="margin-top:0.2rem;">✓ Bonne réponse : ${a.correct}</div>` : ''}
+    </div>`;
+  });
+  document.getElementById('ltAnswerReview').innerHTML = html;
+}
+
+// Check for referral on page load
+(function checkReferral() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (ref) {
+    // Store the referral
+    const referrals = JSON.parse(localStorage.getItem('lt_referrals') || '[]');
+    referrals.push({ ref, timestamp: Date.now() });
+    localStorage.setItem('lt_referrals', JSON.stringify(referrals));
+    // Pre-fill referral bonus
+    showToast('🎉 Merci d\'avoir cliqué ! Tu as débloqué un bonus.');
+  }
+})();
+
 </script>
 </body>
 </html>
