@@ -8,6 +8,12 @@
 <meta property="og:title" content="Ultralengua Pro">
 <meta property="og:description" content="Maîtrisez les langues naturellement avec l'IA">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://ucfzem.github.io/ultralengua-pro/">
+<meta property="og:image" content="https://ucfzem.github.io/ultralengua-pro/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ultralengua Pro — Maîtrisez les langues avec l'IA">
+<meta name="twitter:description" content="Apprenez 6 langues avec l'IA conversationnelle. Quiz interactifs, histoires bilingues, glossaire intelligent.">
+<link rel="canonical" href="https://ucfzem.github.io/ultralengua-pro/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -1624,11 +1630,24 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// ── HASH ROUTING ──
+function handleHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const el = document.getElementById(hash);
+    if (el) {
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+    }
+  }
+}
+window.addEventListener('hashchange', handleHash);
+
 // ── INIT ──
 initQuiz();
 initStories();
 initGlossary();
 updateProgressDashboard();
+handleHash();
 </script>
 </body>
 </html>
