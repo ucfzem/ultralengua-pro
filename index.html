@@ -40,6 +40,8 @@
     --muted: #8a8070;
     --success: #4a9a5e;
     --error: #c4583a;
+    --text: #0e0c0a;
+    --border: rgba(14,12,10,0.12);
     --nav-bg: rgba(245,240,232,0.85);
     --radius: 1.5rem;
     --radius-sm: 1rem;
@@ -57,6 +59,8 @@
     --muted: #9a9080;
     --success: #5aaa6e;
     --error: #d46a4a;
+    --text: #f0ece4;
+    --border: rgba(240,236,228,0.12);
     --nav-bg: rgba(14,12,10,0.9);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1095,32 +1099,32 @@
     <h2 class="section-title">Six langues,<br><em>un seul écosystème</em></h2>
     <p class="section-sub">Chaque langue dispose de ses propres données d'entraînement, de ses nuances culturelles et de son parcours dédié.</p>
     <div class="langs-grid reveal">
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('fr')" style="cursor:pointer">
         <span class="lang-flag">🇫🇷</span>
         <div><div class="lang-name">Français</div><div class="lang-level">A1 → C2 · DELF/DALF</div></div>
         <span class="lang-users">280M locuteurs</span>
       </div>
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('en')" style="cursor:pointer">
         <span class="lang-flag">🇬🇧</span>
         <div><div class="lang-name">Anglais</div><div class="lang-level">A1 → C2 · TOEFL/IELTS</div></div>
         <span class="lang-users">1.5B locuteurs</span>
       </div>
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('es')" style="cursor:pointer">
         <span class="lang-flag">🇪🇸</span>
         <div><div class="lang-name">Espagnol</div><div class="lang-level">A1 → C2 · DELE</div></div>
         <span class="lang-users">580M locuteurs</span>
       </div>
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('de')" style="cursor:pointer">
         <span class="lang-flag">🇩🇪</span>
         <div><div class="lang-name">Allemand</div><div class="lang-level">A1 → C2 · Goethe</div></div>
         <span class="lang-users">130M locuteurs</span>
       </div>
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('ar')" style="cursor:pointer">
         <span class="lang-flag">🇸🇦</span>
         <div><div class="lang-name">Arabe</div><div class="lang-level">A1 → C2 · Script inclus</div></div>
         <span class="lang-users">420M locuteurs</span>
       </div>
-      <div class="lang-card">
+      <div class="lang-card" onclick="startQuiz('nl')" style="cursor:pointer">
         <span class="lang-flag">🇳🇱</span>
         <div><div class="lang-name">Néerlandais</div><div class="lang-level">A1 → C2 · NT2</div></div>
         <span class="lang-users">25M locuteurs</span>
