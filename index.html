@@ -27,7 +27,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
 <style>
   :root {
     --ink: #0e0c0a;
@@ -170,109 +169,6 @@
   }
   .lang-pill:hover { background: var(--gold-light); color: var(--ink); }
 
-  .hero-visual {
-    position: relative; display: flex; align-items: center; justify-content: center;
-    animation: float 6s ease-in-out infinite;
-  }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-  .phone-card {
-    width: 280px;
-    background: var(--cream);
-    border-radius: var(--radius-pill);
-    box-shadow: 0 30px 80px rgba(14,12,10,0.18), 0 6px 20px rgba(14,12,10,0.08);
-    overflow: hidden;
-    border: 1px solid rgba(201,168,76,0.2);
-  }
-  .phone-top {
-    background: var(--ink); padding: 1.2rem 1.4rem;
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .phone-top .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .phone-top .dot.r { background: var(--terracotta); }
-  .phone-top .dot.y { background: var(--gold); }
-  .phone-top .dot.g { background: var(--sage); }
-  .phone-title { font-family: 'Fraunces', serif; font-size: 0.9rem; color: var(--paper); margin-left: auto; margin-right: auto; }
-  .phone-body { padding: 1.4rem; }
-  .chat-msg {
-    border-radius: var(--radius-sm); padding: 0.75rem 1rem;
-    font-size: 0.82rem; line-height: 1.5;
-    margin-bottom: 0.75rem; max-width: 90%;
-    opacity: 0; animation: msgIn .4s forwards;
-  }
-  .chat-msg.ai {
-    background: rgba(45,107,138,0.1); color: var(--sky);
-    border-bottom-left-radius: 0.25rem;
-    animation-delay: 0.5s;
-  }
-  .chat-msg.user {
-    background: var(--ink); color: var(--paper);
-    margin-left: auto; text-align: right;
-    border-bottom-right-radius: 0.25rem;
-    animation-delay: 1s;
-  }
-  .chat-msg.correction {
-    background: rgba(201,168,76,0.15); color: #7a5a10;
-    border: 1px solid rgba(201,168,76,0.3);
-    animation-delay: 1.5s;
-    font-size: 0.78rem;
-  }
-  @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  .streak-bar {
-    background: rgba(90,122,94,0.1); border-radius: var(--radius-sm);
-    padding: 0.75rem 1rem; margin-top: 0.5rem;
-    display: flex; align-items: center; gap: 0.75rem;
-    opacity: 0; animation: msgIn .4s 2s forwards;
-  }
-  .streak-fire { font-size: 1.2rem; }
-  .streak-text { font-size: 0.78rem; font-weight: 500; color: var(--sage); }
-  .progress-bar { height: 4px; background: rgba(90,122,94,0.2); border-radius: 2px; flex: 1; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--sage); border-radius: 2px; width: 72%; }
-  .float-card {
-    position: absolute;
-    background: var(--cream);
-    border-radius: var(--radius-sm);
-    padding: 0.8rem 1.1rem;
-    box-shadow: 0 10px 30px rgba(14,12,10,0.12);
-    font-size: 0.78rem; font-weight: 500;
-    border: 1px solid rgba(201,168,76,0.2);
-    opacity: 0; animation: msgIn .5s forwards;
-  }
-  .float-card.a { right: -60px; top: 60px; animation-delay: 2.3s; color: var(--sky); }
-  .float-card.b { left: -70px; bottom: 80px; animation-delay: 2.6s; color: var(--terracotta); }
-
-  /* ── STATS ── */
-  .stats {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: rgba(14,12,10,0.08);
-    border-top: 1px solid rgba(14,12,10,0.08);
-    border-bottom: 1px solid rgba(14,12,10,0.08);
-  }
-  .stat { background: var(--paper); padding: 2.5rem 2rem; text-align: center; }
-  .stat-num {
-    font-family: 'Fraunces', serif; font-size: 2.8rem; font-weight: 700;
-    color: var(--ink); line-height: 1;
-  }
-  .stat-num span { color: var(--gold); }
-  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; }
-
-  /* ── SECTION COMMON ── */
-  .section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.75rem; font-weight: 500; color: var(--gold);
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
-  }
-  .section-label::before { content: '—'; }
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700; line-height: 1.15;
-    max-width: 560px; margin-bottom: 1rem;
-  }
-  .section-title em { font-style: italic; color: var(--terracotta); }
-  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 500px; margin-bottom: 3.5rem; }
-
-  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .feature-card {
     background: var(--cream);
     border: 1px solid rgba(201,168,76,0.2);
@@ -324,10 +220,18 @@
     display: flex; align-items: center; gap: 1.2rem;
   }
   .lang-card:hover { background: rgba(201,168,76,0.08); }
-  .lang-flag { font-size: 2rem; }
   .lang-name { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--paper); }
   .lang-level { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.15rem; }
   .lang-users { margin-left: auto; font-size: 0.75rem; color: var(--gold); font-weight: 500; }
+  /* Flag badges — pure CSS, no external dep */
+  .flag-badge { display:inline-flex; align-items:center; justify-content:center; width:1.8rem; height:1.8rem; border-radius:4px; font-weight:700; font-size:0.65rem; line-height:1; flex-shrink:0; }
+  .flag-badge.fr { background:#0055A4; color:#fff; }
+  .flag-badge.en { background:#CF142B; color:#fff; }
+  .flag-badge.es { background:#C60B1E; color:#FFC400; }
+  .flag-badge.de { background:#000; color:#DD0000; }
+  .flag-badge.ar { background:#006233; color:#fff; }
+  .flag-badge.nl { background:#FF6600; color:#fff; }
+  .flag-badge.sm { width:1.2rem; height:1.2rem; font-size:0.5rem; }
 
   /* ── QUIZ ── */
   .quiz-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
@@ -436,7 +340,7 @@
     transition: transform .2s, box-shadow .2s;
   }
   .story-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,12,10,0.08); }
-  .story-flag { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .story-flag { margin-bottom: 0.5rem; }
   .story-card h3 { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 0.4rem; }
   .story-card .story-level { font-size: 0.72rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
   .story-text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.8rem; }
@@ -661,8 +565,7 @@
   @media (max-width: 600px) {
     .section { padding: 4rem 1.5rem; }
     .langs-section { padding: 4rem 1.5rem; }
-    .lang-card { padding: 1rem; gap: 0.6rem; flex-wrap: wrap; }
-    .lang-flag { font-size: 1.5rem; width: 2rem; text-align: center; }
+    .lang-card { padding: 1rem; gap: 0.6rem; }
     .lang-users { margin-left: 0; width: 100%; }
     .features-grid, .langs-grid, .roadmap-grid, .resources-grid { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr 1fr; }
@@ -875,12 +778,12 @@
       <a href="#features" class="btn-secondary">Voir les fonctionnalités</a>
     </div>
     <div class="hero-langs">
-      <span class="lang-pill"><span class="fi fi-fr"></span> Français</span>
-      <span class="lang-pill"><span class="fi fi-gb"></span> Anglais</span>
-      <span class="lang-pill"><span class="fi fi-es"></span> Espagnol</span>
-      <span class="lang-pill"><span class="fi fi-de"></span> Allemand</span>
-      <span class="lang-pill"><span class="fi fi-sa"></span> Arabe</span>
-      <span class="lang-pill"><span class="fi fi-nl"></span> Néerlandais</span>
+      <span class="lang-pill">🇫🇷 Français</span>
+      <span class="lang-pill">🇬🇧 Anglais</span>
+      <span class="lang-pill">🇪🇸 Espagnol</span>
+      <span class="lang-pill">🇩🇪 Allemand</span>
+      <span class="lang-pill">🇸🇦 Arabe</span>
+      <span class="lang-pill">🇳🇱 Néerlandais</span>
     </div>
   </div>
 
@@ -931,7 +834,7 @@
             <div class="lt-progress-bar"><div class="lt-progress-fill" id="ltProgressFill"></div></div>
             <div class="lt-progress-text" id="ltProgressText">1/5</div>
           </div>
-          <div class="lt-lang-tag" id="ltLangTag"><span class="fi fi-gb"></span> Anglais</div>
+          <div class="lt-lang-tag" id="ltLangTag"><span class="flag-badge en sm">EN</span> Anglais</div>
           <div class="lt-q-text" id="ltQText"></div>
           <div class="lt-options" id="ltOptions"></div>
           <div class="lt-feedback" id="ltFeedback"></div>
@@ -1101,32 +1004,32 @@
     <p class="section-sub">Chaque langue dispose de ses propres données d'entraînement, de ses nuances culturelles et de son parcours dédié.</p>
     <div class="langs-grid reveal">
       <div class="lang-card" onclick="startQuiz('fr')" style="cursor:pointer">
-        <span class="fi fi-fr" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge fr">FR</span>
         <div><div class="lang-name">Français</div><div class="lang-level">A1 → C2 · DELF/DALF</div></div>
         <span class="lang-users">280M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('en')" style="cursor:pointer">
-        <span class="fi fi-gb" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge en">EN</span>
         <div><div class="lang-name">Anglais</div><div class="lang-level">A1 → C2 · TOEFL/IELTS</div></div>
         <span class="lang-users">1.5B locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('es')" style="cursor:pointer">
-        <span class="fi fi-es" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge es">ES</span>
         <div><div class="lang-name">Espagnol</div><div class="lang-level">A1 → C2 · DELE</div></div>
         <span class="lang-users">580M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('de')" style="cursor:pointer">
-        <span class="fi fi-de" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge de">DE</span>
         <div><div class="lang-name">Allemand</div><div class="lang-level">A1 → C2 · Goethe</div></div>
         <span class="lang-users">130M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('ar')" style="cursor:pointer">
-        <span class="fi fi-sa" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge ar">AR</span>
         <div><div class="lang-name">Arabe</div><div class="lang-level">A1 → C2 · Script inclus</div></div>
         <span class="lang-users">420M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('nl')" style="cursor:pointer">
-        <span class="fi fi-nl" style="font-size:1.8rem;width:2.4rem"></span>
+        <span class="flag-badge nl">NL</span>
         <div><div class="lang-name">Néerlandais</div><div class="lang-level">A1 → C2 · NT2</div></div>
         <span class="lang-users">25M locuteurs</span>
       </div>
@@ -1278,7 +1181,7 @@
     Ultralengua<span style="color:var(--gold)">·</span>Pro
   </div>
   <p style="opacity:0.7;margin-bottom:12px;line-height:1.6">
-    <span class="fi fi-fr"></span> Français · <span class="fi fi-gb"></span> Anglais · <span class="fi fi-es"></span> Espagnol · <span class="fi fi-de"></span> Allemand · <span class="fi fi-sa"></span> Arabe · <span class="fi fi-nl"></span> Néerlandais
+    <span class="flag-badge fr sm">FR</span> Français · <span class="flag-badge en sm">EN</span> Anglais · <span class="flag-badge es sm">ES</span> Espagnol · <span class="flag-badge de sm">DE</span> Allemand · <span class="flag-badge ar sm">AR</span> Arabe · <span class="flag-badge nl sm">NL</span> Néerlandais
   </p>
   <p style="opacity:0.5;font-size:0.8rem">
     © 2026 Ultralengua Pro — Apprentissage des langues par l'IA
@@ -1471,7 +1374,7 @@ function getBadge(score, total) {
 function initQuiz() {
   const container = document.getElementById('quizLangBtns');
   container.innerHTML = LANGUAGES.map(l =>
-    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="startQuiz('${l.id}')"><span class="fi fi-${l.fi}"></span> ${l.name}</button>`
+    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="startQuiz('${l.id}')"><span class="flag-badge ${l.id}">${l.id.toUpperCase()}</span> ${l.name}</button>`
   ).join('');
 }
 
@@ -1594,7 +1497,7 @@ function initStories() {
   const langIds = Object.keys(STORIES);
   tabContainer.innerHTML = langIds.map(id => {
     const lang = LANGUAGES.find(l => l.id === id);
-    return `<button class="story-tab" data-lang="${id}" onclick="showStories('${id}')">${lang ? '<span class="fi fi-' + lang.fi + '"></span> ' + lang.name : id}</button>`;
+    return `<button class="story-tab" data-lang="${id}" onclick="showStories('${id}')">${lang ? '<span class="flag-badge ' + lang.id + '">' + lang.id.toUpperCase() + '</span> ' + lang.name : id}</button>`;
   }).join('');
   if (langIds.length > 0) showStories(langIds[0]);
 }
@@ -1610,7 +1513,7 @@ function showStories(langId) {
   }
   container.innerHTML = `<div class="story-list active">${stories.map((s, i) => `
     <div class="story-card reveal">
-      <div class="story-flag"><span class="fi fi-${lang ? lang.fi : 'fr'}" style="font-size:2rem"></span></div>
+      <div class="story-flag"><span class="flag-badge ${lang ? lang.id : 'fr'}">${lang ? lang.id.toUpperCase() : 'FR'}</span></div>
       <h3>${s.title}</h3>
       <div class="story-level">${s.level}</div>
       <div class="story-text">${s.text}</div>
