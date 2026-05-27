@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
 <style>
   :root {
     --ink: #0e0c0a;
@@ -168,7 +169,7 @@
     transition: all .2s; cursor: default;
   }
   .lang-pill:hover { background: var(--gold-light); color: var(--ink); }
-
+  .fi { vertical-align: middle; line-height: 1; }
   .feature-card {
     background: var(--cream);
     border: 1px solid rgba(201,168,76,0.2);
@@ -223,15 +224,6 @@
   .lang-name { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--paper); }
   .lang-level { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.15rem; }
   .lang-users { margin-left: auto; font-size: 0.75rem; color: var(--gold); font-weight: 500; }
-  /* Flag badges — pure CSS, no external dep */
-  .flag-badge { display:inline-flex; align-items:center; justify-content:center; width:1.8rem; height:1.8rem; border-radius:4px; font-weight:700; font-size:0.65rem; line-height:1; flex-shrink:0; }
-  .flag-badge.fr { background:#0055A4; color:#fff; }
-  .flag-badge.en { background:#CF142B; color:#fff; }
-  .flag-badge.es { background:#C60B1E; color:#FFC400; }
-  .flag-badge.de { background:#000; color:#DD0000; }
-  .flag-badge.ar { background:#006233; color:#fff; }
-  .flag-badge.nl { background:#FF6600; color:#fff; }
-  .flag-badge.sm { width:1.2rem; height:1.2rem; font-size:0.5rem; }
 
   /* ── QUIZ ── */
   .quiz-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
@@ -778,12 +770,12 @@
       <a href="#features" class="btn-secondary">Voir les fonctionnalités</a>
     </div>
     <div class="hero-langs">
-      <span class="lang-pill">🇫🇷 Français</span>
-      <span class="lang-pill">🇬🇧 Anglais</span>
-      <span class="lang-pill">🇪🇸 Espagnol</span>
-      <span class="lang-pill">🇩🇪 Allemand</span>
-      <span class="lang-pill">🇸🇦 Arabe</span>
-      <span class="lang-pill">🇳🇱 Néerlandais</span>
+      <span class="lang-pill"><span class="fi fi-fr"></span> Français</span>
+      <span class="lang-pill"><span class="fi fi-gb"></span> Anglais</span>
+      <span class="lang-pill"><span class="fi fi-es"></span> Espagnol</span>
+      <span class="lang-pill"><span class="fi fi-de"></span> Allemand</span>
+      <span class="lang-pill"><span class="fi fi-sa"></span> Arabe</span>
+      <span class="lang-pill"><span class="fi fi-nl"></span> Néerlandais</span>
     </div>
   </div>
 
@@ -834,7 +826,7 @@
             <div class="lt-progress-bar"><div class="lt-progress-fill" id="ltProgressFill"></div></div>
             <div class="lt-progress-text" id="ltProgressText">1/5</div>
           </div>
-          <div class="lt-lang-tag" id="ltLangTag"><span class="flag-badge en sm">EN</span> Anglais</div>
+          <div class="lt-lang-tag" id="ltLangTag"><span class="fi fi-gb"></span> Anglais</div>
           <div class="lt-q-text" id="ltQText"></div>
           <div class="lt-options" id="ltOptions"></div>
           <div class="lt-feedback" id="ltFeedback"></div>
@@ -1004,32 +996,32 @@
     <p class="section-sub">Chaque langue dispose de ses propres données d'entraînement, de ses nuances culturelles et de son parcours dédié.</p>
     <div class="langs-grid reveal">
       <div class="lang-card" onclick="startQuiz('fr')" style="cursor:pointer">
-        <span class="flag-badge fr">FR</span>
+        <span class="fi fi-fr"></span>
         <div><div class="lang-name">Français</div><div class="lang-level">A1 → C2 · DELF/DALF</div></div>
         <span class="lang-users">280M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('en')" style="cursor:pointer">
-        <span class="flag-badge en">EN</span>
+        <span class="fi fi-gb"></span>
         <div><div class="lang-name">Anglais</div><div class="lang-level">A1 → C2 · TOEFL/IELTS</div></div>
         <span class="lang-users">1.5B locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('es')" style="cursor:pointer">
-        <span class="flag-badge es">ES</span>
+        <span class="fi fi-es"></span>
         <div><div class="lang-name">Espagnol</div><div class="lang-level">A1 → C2 · DELE</div></div>
         <span class="lang-users">580M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('de')" style="cursor:pointer">
-        <span class="flag-badge de">DE</span>
+        <span class="fi fi-de"></span>
         <div><div class="lang-name">Allemand</div><div class="lang-level">A1 → C2 · Goethe</div></div>
         <span class="lang-users">130M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('ar')" style="cursor:pointer">
-        <span class="flag-badge ar">AR</span>
+        <span class="fi fi-sa"></span>
         <div><div class="lang-name">Arabe</div><div class="lang-level">A1 → C2 · Script inclus</div></div>
         <span class="lang-users">420M locuteurs</span>
       </div>
       <div class="lang-card" onclick="startQuiz('nl')" style="cursor:pointer">
-        <span class="flag-badge nl">NL</span>
+        <span class="fi fi-nl"></span>
         <div><div class="lang-name">Néerlandais</div><div class="lang-level">A1 → C2 · NT2</div></div>
         <span class="lang-users">25M locuteurs</span>
       </div>
@@ -1181,7 +1173,7 @@
     Ultralengua<span style="color:var(--gold)">·</span>Pro
   </div>
   <p style="opacity:0.7;margin-bottom:12px;line-height:1.6">
-    <span class="flag-badge fr sm">FR</span> Français · <span class="flag-badge en sm">EN</span> Anglais · <span class="flag-badge es sm">ES</span> Espagnol · <span class="flag-badge de sm">DE</span> Allemand · <span class="flag-badge ar sm">AR</span> Arabe · <span class="flag-badge nl sm">NL</span> Néerlandais
+    <span class="fi fi-fr"></span> Français · <span class="fi fi-gb"></span> Anglais · <span class="fi fi-es"></span> Espagnol · <span class="fi fi-de"></span> Allemand · <span class="fi fi-sa"></span> Arabe · <span class="fi fi-nl"></span> Néerlandais
   </p>
   <p style="opacity:0.5;font-size:0.8rem">
     © 2026 Ultralengua Pro — Apprentissage des langues par l'IA
@@ -1195,12 +1187,12 @@
 // ── DATA ──
 
 const LANGUAGES = [
-  { id: 'fr', name: 'Français', flag: '🇫🇷', fi: 'fr' },
-  { id: 'en', name: 'Anglais', flag: '🇬🇧', fi: 'gb' },
-  { id: 'es', name: 'Espagnol', flag: '🇪🇸', fi: 'es' },
-  { id: 'de', name: 'Allemand', flag: '🇩🇪', fi: 'de' },
-  { id: 'ar', name: 'Arabe', flag: '🇸🇦', fi: 'sa' },
-  { id: 'nl', name: 'Néerlandais', flag: '🇳🇱', fi: 'nl' },
+  { id: 'fr', name: 'Français', fi: 'fr' },
+  { id: 'en', name: 'Anglais', fi: 'gb' },
+  { id: 'es', name: 'Espagnol', fi: 'es' },
+  { id: 'de', name: 'Allemand', fi: 'de' },
+  { id: 'ar', name: 'Arabe', fi: 'sa' },
+  { id: 'nl', name: 'Néerlandais', fi: 'nl' },
 ];
 
 const QUIZZES = {
@@ -1374,7 +1366,7 @@ function getBadge(score, total) {
 function initQuiz() {
   const container = document.getElementById('quizLangBtns');
   container.innerHTML = LANGUAGES.map(l =>
-    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="startQuiz('${l.id}')"><span class="flag-badge ${l.id}">${l.id.toUpperCase()}</span> ${l.name}</button>`
+    `<button class="quiz-lang-btn" data-lang="${l.id}" onclick="startQuiz('${l.id}')"><span class="fi fi-${l.fi}"></span> ${l.name}</button>`
   ).join('');
 }
 
@@ -1497,7 +1489,7 @@ function initStories() {
   const langIds = Object.keys(STORIES);
   tabContainer.innerHTML = langIds.map(id => {
     const lang = LANGUAGES.find(l => l.id === id);
-    return `<button class="story-tab" data-lang="${id}" onclick="showStories('${id}')">${lang ? '<span class="flag-badge ' + lang.id + '">' + lang.id.toUpperCase() + '</span> ' + lang.name : id}</button>`;
+    return `<button class="story-tab" data-lang="${id}" onclick="showStories('${id}')">${lang ? '<span class="fi fi-' + lang.fi + '"></span> ' + lang.name : id}</button>`;
   }).join('');
   if (langIds.length > 0) showStories(langIds[0]);
 }
@@ -1513,7 +1505,7 @@ function showStories(langId) {
   }
   container.innerHTML = `<div class="story-list active">${stories.map((s, i) => `
     <div class="story-card reveal">
-      <div class="story-flag"><span class="flag-badge ${lang ? lang.id : 'fr'}">${lang ? lang.id.toUpperCase() : 'FR'}</span></div>
+      <div class="story-flag"><span class="fi fi-${lang ? lang.fi : 'fr'}"></span></div>
       <h3>${s.title}</h3>
       <div class="story-level">${s.level}</div>
       <div class="story-text">${s.text}</div>
@@ -1560,7 +1552,7 @@ function renderGlossary(items) {
   grid.innerHTML = items.map(g => {
     const lang = LANGUAGES.find(l => l.id === g.lang);
     return `<div class="glossary-item">
-      <div class="glossary-lang">${lang ? lang.flag : '🌐'}</div>
+      <div class="glossary-lang">${lang ? '<span class="fi fi-' + lang.fi + '"></span>' : '🌐'}</div>
       <div class="glossary-word">${g.word}</div>
       <div class="glossary-trans">${g.trans}</div>
     </div>`;
@@ -1618,31 +1610,31 @@ updateProgressDashboard();
 const LEVEL_QUESTIONS = [
   {
     q: 'Que signifie le mot anglais "abundant" ?',
-    lang: '🇬🇧 Anglais',
+    lang: '<span class="fi fi-gb"></span> Anglais',
     options: ['Rare', 'Abondant', 'Faible', 'Petit'],
     correct: 1
   },
   {
     q: 'Complétez la phrase : "Il ___ arrivé hier."',
-    lang: '🇫🇷 Français',
+    lang: '<span class="fi fi-fr"></span> Français',
     options: ['a', 'est', 'as', 'es'],
     correct: 1
   },
   {
     q: '¿Cómo se dice "bonjour" en español?',
-    lang: '🇪🇸 Espagnol',
+    lang: '<span class="fi fi-es"></span> Espagnol',
     options: ['Gracias', 'Adiós', 'Hola', 'Buenas noches'],
     correct: 2
   },
   {
     q: 'Was bedeutet das Wort "Hund" auf Französisch?',
-    lang: '🇩🇪 Allemand',
+    lang: '<span class="fi fi-de"></span> Allemand',
     options: ['Chat', 'Oiseau', 'Poisson', 'Chien'],
     correct: 3
   },
   {
     q: 'Which sentence is grammatically correct?',
-    lang: '🇬🇧 Anglais',
+    lang: '<span class="fi fi-gb"></span> Anglais',
     options: [
       'She don\'t like coffee',
       'She doesn\'t likes coffee',
@@ -1679,7 +1671,7 @@ function renderLevelQuestion() {
   const total = LEVEL_QUESTIONS.length;
   document.getElementById('ltProgressFill').style.width = ((ltState.index + 1) / total * 100) + '%';
   document.getElementById('ltProgressText').textContent = `${ltState.index + 1}/${total}`;
-  document.getElementById('ltLangTag').textContent = q.lang;
+  document.getElementById('ltLangTag').innerHTML = q.lang;
   document.getElementById('ltQText').textContent = q.q;
   document.getElementById('ltFeedback').className = 'lt-feedback';
   document.getElementById('ltFeedback').style.display = 'none';
